@@ -1,4 +1,4 @@
-"""first_project URL Configuration
+"""first URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from app.views import time_view, workdir_view, home_view
+from first_project.app.views import home_view, time_view, workdir_view
 
 urlpatterns = [
     path('', home_view, name='home'),
