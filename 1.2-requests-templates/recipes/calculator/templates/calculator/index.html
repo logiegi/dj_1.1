@@ -5,6 +5,7 @@
     <title>Рецепты</title>
 </head>
 <body>
+<p>Каждый раз при обновлении страницы происходит повторное умножение, подскажите как решить эту проблему?</p>
 {% for ingredient, amount in recipe.items %}
     <p>{{ ingredient }}: {{ amount }}</p>
 {% empty %}

@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 
 DATA = {
@@ -10,7 +11,7 @@ DATA = {
         'макароны, г': 0.3,
         'сыр, г': 0.05,
     },
-    'buter': {
+    'butter': {
         'хлеб, ломтик': 1,
         'колбаса, ломтик': 1,
         'сыр, ломтик': 1,
@@ -18,6 +19,7 @@ DATA = {
     },
     # можете добавить свои рецепты ;)
 }
+
 
 # Напишите ваш обработчик. Используйте DATA как источник данных
 # Результат - render(request, 'calculator/index.html', context)
@@ -28,3 +30,31 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+def omlet(request):
+    serving = int(request.GET.get('serving', 1))
+    for ing in DATA['omlet']:
+        DATA['omlet'][ing] = DATA['omlet'][ing] * serving
+    context = {
+        'recipe': DATA['omlet']
+    }
+    return render(request, 'calculator/index.html', context)
+
+
+def pasta(request):
+    serving = int(request.GET.get('serving', 1))
+    for ing in DATA['pasta']:
+        DATA['pasta'][ing] = DATA['pasta'][ing] * serving
+    context = {
+        'recipe': DATA['pasta']
+    }
+    return render(request, 'calculator/index.html', context)
+
+
+def butter(request):
+    serving = int(request.GET.get('serving', 1))
+    for ing in DATA['butter']:
+        DATA['butter'][ing] = DATA['butter'][ing] * serving
+    context = {
+        'recipe': DATA['butter']
+    }
+    return render(request, 'calculator/index.html', context)
